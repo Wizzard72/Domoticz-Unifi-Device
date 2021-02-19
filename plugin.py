@@ -59,8 +59,6 @@ class BasePlugin:
     _unifiConn = False
     override_time = 0
     hostAuth = False
-    UNIFI_ANYONE_HOME_UNIT = 1
-    UNIFI_OVERRIDE_UNIT = 255
     _Cookies = None
     _csrftoken = None
     cookie = None
@@ -81,8 +79,6 @@ class BasePlugin:
     _verify_ssl = False
     _baseurl = None
     _session = Session()
-    _uapDevices = []
-    _total_phones_active_before = 0
     _lastloginfailed = False
     
     def __init__(self):
@@ -579,38 +575,8 @@ def DumpConfigToLog():
         Domoticz.Debug(strName+"Device LastLevel: " + str(Devices[x].LastLevel))
     return
 
-def find_available_unit_phone():
-    for num in range(50,70):
-        if num not in Devices:
-            return num
-    return None
-
-def find_available_unit_geo():
-    for num in range(80,100):
-        if num not in Devices:
-            return num
-    return None
-
-def find_available_unit_uap():
-    for num in range(110,140):
-        if num not in Devices:
-            return num
-    return None
-
-def find_available_unit_usw():
-    for num in range(150,180):
-        if num not in Devices:
-            return num
-    return None
-
-def find_available_unit_ugw():
-    for num in range(140,250):
-        if num not in Devices:
-            return num
-    return None
-
-def find_available_unit_udm():
-    for num in range(140,250):
+def find_available_unit_device():
+    for num in range(1,240):
         if num not in Devices:
             return num
     return None
